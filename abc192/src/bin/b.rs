@@ -1,3 +1,7 @@
+use proconio::input;
+
 fn main() {
-    todo!();
+    input! {
+        s:useize
+    }
 }
