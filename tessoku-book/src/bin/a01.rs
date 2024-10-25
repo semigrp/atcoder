@@ -22,6 +22,7 @@ fn solve() -> Result<String> {
 
 fn main() -> Result<()> {
     input! {
+        n: usize,
     }
     let result = solve()?;
     println!("{}", result);
