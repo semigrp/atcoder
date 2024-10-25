@@ -45,28 +45,49 @@ jobs:
           git diff --name-only $BASE_SHA $HEAD_SHA > changed_files.txt
           cat changed_files.txt
 
-      - name: Extract problem names
+      - name: Extract problem directories and names
         id: extract-problems
         run: |
-          problems=$(grep '^.*/src/bin/.*\.rs$' changed_files.txt | sed 's|.*/src/bin/\(.*\)\.rs$|\1|' | uniq | tr '\n' ' ')
-          echo "problems=$problems" >> $GITHUB_OUTPUT
-          echo "Detected problems: $problems"
+          #!/bin/bash
+          declare -A problem_dirs
+          while IFS= read -r file; do
+            if [[ "$file" =~ ^(.*)/src/bin/(.*)\.rs$ ]]; then
+              dir="${BASH_REMATCH[1]}"
+              problem="${BASH_REMATCH[2]}"
+              problem_dirs["$dir"]+="$problem "
+            fi
+          done < changed_files.txt
 
-      - name: Retrieve testcases
-        working-directory: tessoku-book
-        run: |
-          # Retrieve all testcases with overwrite to ensure updated testcases are fetched
-          cargo compete retrieve testcases --overwrite
+          # Prepare outputs
+          outputs=""
+          for dir in "${!problem_dirs[@]}"; do
+            problems="${problem_dirs[$dir]}"
+            outputs+="$dir:$problems;"
+          done
+
+          # Remove trailing semicolon
+          outputs="${outputs%;}"
+
+          echo "problems_and_dirs=$outputs" >> $GITHUB_OUTPUT
+          echo "Detected problems and directories: $outputs"
 
       - name: Run Cargo Compete Test for changed problems
-        if: steps.extract-problems.outputs.problems != ''
-        working-directory: tessoku-book
+        if: steps.extract-problems.outputs.problems_and_dirs != ''
         run: |
-          for problem in ${{ steps.extract-problems.outputs.problems }}; do
-            echo "Testing problem: $problem"
-            cargo compete test "$problem"
+          IFS=';' read -ra entries <<< "${{ steps.extract-problems.outputs.problems_and_dirs }}"
+          for entry in "${entries[@]}"; do
+            IFS=':' read -r dir problems <<< "$entry"
+            echo "Entering directory: $dir"
+            cd "$dir"
+            echo "Retrieving testcases"
+            cargo compete retrieve testcases --overwrite
+            for problem in $problems; do
+              echo "Testing problem: $problem"
+              cargo compete test "$problem"
+            done
+            cd - > /dev/null
           done
 
       - name: No problems changed
-        if: steps.extract-problems.outputs.problems == ''
+        if: steps.extract-problems.outputs.problems_and_dirs == ''
         run: echo "No AtCoder problems were changed. Skipping tests."
