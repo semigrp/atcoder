@@ -1,14 +1,16 @@
 name: Cargo Compete Test on PR
 
 on:
-    push:
-      branches:
-        - main
-        - "**"
-    pull_request:
-      branches:
-        - main
-        - "**"
+  push:
+    branches:
+      - main
+      - "**"
+  pull_request:
+    branches:
+      - main
+      - "**"
+    paths:
+      - 'src/bin/**.rs'
 
 jobs:
   test:
@@ -31,9 +33,14 @@ jobs:
       - name: Get list of changed files
         id: changed-files
         run: |
-          BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} HEAD)
-          echo "Base SHA: $BASE_SHA"
-          git diff --name-only $BASE_SHA HEAD > changed_files.txt
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BASE_SHA=${{ github.event.pull_request.base.sha }}
+            HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          else
+            BASE_SHA=$(git rev-parse HEAD^)
+            HEAD_SHA=$(git rev-parse HEAD)
+          fi
+          git diff --name-only $BASE_SHA $HEAD_SHA > changed_files.txt
           cat changed_files.txt
 
       - name: Extract problem names
@@ -41,13 +48,11 @@ jobs:
         run: |
           problems=$(grep '^src/bin/.*\.rs$' changed_files.txt | sed 's|src/bin/\(.*\)\.rs$|\1|' | uniq | tr '\n' ' ')
           echo "problems=$problems" >> $GITHUB_OUTPUT
-          echo "Detected problems: $problems"
 
       - name: Run Cargo Compete Test for changed problems
         if: steps.extract-problems.outputs.problems != ''
         run: |
           for problem in ${{ steps.extract-problems.outputs.problems }}; do
-            echo "Testing problem: $problem"
             cargo compete test "$problem"
           done
 
