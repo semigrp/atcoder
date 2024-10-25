@@ -16,15 +16,15 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(n:usize) -> Result<usize> {
+    Ok(n*n)
 }
 
 fn main() -> Result<()> {
     input! {
         n: usize,
     }
-    let result = solve()?;
+    let result = solve(n)?;
     println!("{}", result);
     Ok(())
 }
@@ -35,6 +35,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve().unwrap(), "result");
+        assert_eq!(solve(3).unwrap(), 9);
     }
 }
