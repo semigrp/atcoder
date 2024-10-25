@@ -1,9 +1,14 @@
 name: Cargo Compete Test on PR
 
 on:
-  pull_request:
-    branches:
-      - main
+    push:
+      branches:
+        - main
+        - "**"
+    pull_request:
+      branches:
+        - main
+        - "**"
 
 jobs:
   test:
