@@ -10,7 +10,7 @@ on:
       - main
       - "**"
     paths:
-      - 'src/bin/**.rs'
+      - '**/src/bin/**.rs'
 
 jobs:
   test:
@@ -46,7 +46,7 @@ jobs:
       - name: Extract problem names
         id: extract-problems
         run: |
-          problems=$(grep '^src/bin/.*\.rs$' changed_files.txt | sed 's|src/bin/\(.*\)\.rs$|\1|' | uniq | tr '\n' ' ')
+          problems=$(grep '^.*/src/bin/.*\.rs$' changed_files.txt | sed 's|.*/src/bin/\(.*\)\.rs$|\1|' | uniq | tr '\n' ' ')
           echo "problems=$problems" >> $GITHUB_OUTPUT
 
       - name: Run Cargo Compete Test for changed problems

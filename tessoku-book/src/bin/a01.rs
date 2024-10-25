@@ -14,7 +14,6 @@ use proconio::{
     marker::{Chars, Usize1},
 };
 
-
 fn solve(n:usize) -> Result<usize> {
     Ok(n*n)
 }
