@@ -14,8 +14,6 @@ use proconio::{
     marker::{Chars, Usize1},
 };
 
-const MOD: usize = 1e9 as usize + 7;
-
 fn solve() -> Result<String> {
     Ok("result".into())
 }
