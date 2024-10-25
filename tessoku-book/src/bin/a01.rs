@@ -36,4 +36,3 @@ mod tests {
         assert_eq!(solve(3).unwrap(), 9);
     }
 }
-

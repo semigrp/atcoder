@@ -79,6 +79,8 @@ jobs:
             IFS=':' read -r dir problems <<< "$entry"
             echo "Entering directory: $dir"
             cd "$dir"
+            echo "Retrieving testcases"
+            cargo compete retrieve testcases --overwrite
             for problem in $problems; do
               echo "Testing problem: $problem"
               cargo compete test "$problem"
