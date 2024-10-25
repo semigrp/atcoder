@@ -57,8 +57,6 @@ jobs:
         working-directory: tessoku-book
         run: |
           for problem in ${{ steps.extract-problems.outputs.problems }}; do
-            echo "Retrieving testcases for problem: $problem"
-            cargo compete retrieve testcases "$problem"
             echo "Testing problem: $problem"
             cargo compete test "$problem"
           done
