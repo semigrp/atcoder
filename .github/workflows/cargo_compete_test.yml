@@ -1,10 +1,12 @@
-name: Cargo Compete Test on PR
+name: Cargo Compete Test
 
 on:
   push:
     branches:
       - main
       - "**"
+    paths:
+      - '**/src/bin/**.rs'
   pull_request:
     branches:
       - main
