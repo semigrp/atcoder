@@ -58,9 +58,9 @@ jobs:
         run: |
           for problem in ${{ steps.extract-problems.outputs.problems }}; do
             echo "Retrieving testcases for problem: $problem"
-            cargo compete retrieve testcases "$problem"
+            cargo compete retrieve testcases --bin "$problem"
             echo "Testing problem: $problem"
-            cargo compete test "$problem"
+            cargo compete test --bin "$problem"
           done
 
       - name: No problems changed
