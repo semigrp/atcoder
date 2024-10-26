@@ -16,14 +16,25 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(k: i32, p: &[i32], q: &[i32]) -> Result<String> {
+    for &i in p {
+        for &j in q {
+            if j == k - p {
+                return Ok("Yes".into())
+            }
+        }
+    }  
+    Ok("No".into())
 }
 
 fn main() -> Result<()> {
     input! {
+        n: usize,
+        k: i32,
+        p: [i32; n],
+        q: [i32; n],
     }
-    let result = solve()?;
+    let result = solve(k, &p, &q)?;
     println!("{}", result);
     Ok(())
 }
