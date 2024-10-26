@@ -19,7 +19,7 @@ const MOD: usize = 1e9 as usize + 7;
 fn solve(k: i32, p: &[i32], q: &[i32]) -> Result<String> {
     for &i in p {
         for &j in q {
-            if j == k - p {
+            if j == k - i {
                 return Ok("Yes".into())
             }
         }
