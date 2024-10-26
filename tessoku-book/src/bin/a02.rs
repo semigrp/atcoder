@@ -14,14 +14,22 @@ use proconio::{
     marker::{Chars, Usize1},
 };
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(x: i32, a: &[i32]) -> Result<String> {
+    for &i in a {
+        if i == x {
+            Ok("Yes".into)
+        }
+    }
+    Ok("No".into())
 }
 
 fn main() -> Result<()> {
     input! {
+        n: usize,
+        x: i32,
+        a: [i32; n],
     }
-    let result = solve()?;
+    let result = solve(x, a)?;
     println!("{}", result);
     Ok(())
 }
