@@ -17,7 +17,7 @@ use proconio::{
 fn solve(x: i32, a: &[i32]) -> Result<String> {
     for &i in a {
         if i == x {
-            Ok("Yes".into)
+            Ok("Yes".into())
         }
     }
     Ok("No".into())
@@ -29,7 +29,7 @@ fn main() -> Result<()> {
         x: i32,
         a: [i32; n],
     }
-    let result = solve(x, a)?;
+    let result = solve(x, &a)?;
     println!("{}", result);
     Ok(())
 }
