@@ -26,7 +26,7 @@ fn solve(n: i32) -> Result<String> {
         i += 1;
     } 
     result += m * 10_i32.pow(i);
-    Ok(format("{:010}", result))
+    Ok(format!("{:010}", result))
 }
 
 fn main() -> Result<()> {
