@@ -16,9 +16,9 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
  
-fn solve(n: i32) -> Result<i32> {
+fn solve(n: i32) -> Result<string> {
     let mut m = n;
-    let mut result;
+    let mut result = 0;
     let mut i = 0;
     while m >= 2 {
         result += (m % 2) * 10_i32.pow(i); 
@@ -26,7 +26,7 @@ fn solve(n: i32) -> Result<i32> {
         i += 1;
     } 
     result += m * 10_i32.pow(i);
-    Ok(result)
+    Ok(format("{:010}", result)
 }
 
 fn main() -> Result<()> {
@@ -44,6 +44,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve(5).unwrap(), 101);
+        assert_eq!(solve(5).unwrap(), "0000000101");
     }
 }
