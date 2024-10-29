@@ -16,7 +16,7 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
  
-fn solve(n: i32) -> Result<string> {
+fn solve(n: i32) -> Result<String> {
     let mut m = n;
     let mut result = 0;
     let mut i = 0;
