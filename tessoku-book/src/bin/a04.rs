@@ -15,15 +15,25 @@ use proconio::{
 };
 
 const MOD: usize = 1e9 as usize + 7;
-
-fn solve() -> Result<String> {
-    Ok("result".into())
+ 
+fn solve(n: i32) -> Result<i32> {
+    let mut m = n;
+    let mut result;
+    let mut i = 0;
+    while m >= 2 {
+        result += (m % 2) * 10_i32.pow(i); 
+        m /= 2;
+        i += 1;
+    } 
+    result += m * 10_i32.pow(i);
+    Ok(result)
 }
 
 fn main() -> Result<()> {
     input! {
+        n:i32,
     }
-    let result = solve()?;
+    let result = solve(n)?;
     println!("{}", result);
     Ok(())
 }
@@ -34,6 +44,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve().unwrap(), "result");
+        assert_eq!(solve(5).unwrap(), 101);
     }
 }
