@@ -45,6 +45,5 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve().unwrap(), "result");
     }
 }

@@ -16,14 +16,24 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(n: i32, k:i32) -> Result<i32> {
+	let mut result = 0;
+	for i in 1..n {
+		for j in 1..n {
+			if i + j < k {
+				result += 1;
+			}
+		}
+	}
+    Ok(result)
 }
 
 fn main() -> Result<()> {
     input! {
+	n: i32,
+	k: i32,
     }
-    let result = solve()?;
+    let result = solve(n, k)?;
     println!("{}", result);
     Ok(())
 }
@@ -34,6 +44,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve().unwrap(), "result");
+        assert_eq!(solve(5, 4).unwrap(), 3);
     }
 }
