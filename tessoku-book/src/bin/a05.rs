@@ -18,9 +18,9 @@ const MOD: usize = 1e9 as usize + 7;
 
 fn solve(n: i32, k:i32) -> Result<i32> {
 	let mut result = 0;
-	for i in 1..n {
-		for j in 1..n {
-			if i + j < k {
+	for i in 1..n+1 {
+		for j in 1..n+1 {
+			if k - (i + j) <= n && k - (i + j) > 0 {
 				result += 1;
 			}
 		}
@@ -44,6 +44,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(solve(5, 4).unwrap(), 3);
+        assert_eq!(solve(3, 6).unwrap(), 7);
     }
 }
