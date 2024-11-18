@@ -27,7 +27,7 @@ fn solve(n: usize, q: usize, a: Vec<usize>, lr: Vec<(usize, usize) >) -> Result<
         let sum = prefix_sum[R] - prefix_sum[L - 1];
         results.push(sum);
     }  
-    Ok("result".iter().join("\n"))
+    Ok(rusults.iter().join("\n"))
 }
 
 fn main() -> Result<()> {
@@ -35,7 +35,7 @@ fn main() -> Result<()> {
         n: usize,
         q: usize,
         a: [usize; n],
-        lr: [(usize, usize), q],
+        lr: [(usize, usize); q],
     }
     let result = solve(n, q, a, lr)?;
     println!("{}", result);
