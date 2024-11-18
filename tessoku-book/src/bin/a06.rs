@@ -16,18 +16,31 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(n: usize, q: uszie, a: Vec<usize>, lr: Vec<usize, usize>) -> Result<String> {
+    for i in 0..n {
+        prefix_sum[i + 1] = prefix_sum[i] + a[i];
+    }
+    
+    let mut results = Vec::with_capacity(q);
+    for &(L, R) in &lr {
+        let sum = prefix_sum[R] - prefix_sum[L - 1];
+        resutlts.push(sum);
+    }  
+    Ok("result".iter().join("\n"))
 }
 
 fn main() -> Result<()> {
     input! {
+        n: usize,
+        q: usize,
+        a: [uszie; n],
+        lr: [(usize, usize), q],
     }
-    let result = solve()?;
+    let result = solve(n, q, a,lr)?;
     println!("{}", result);
     Ok(())
 }
-
+ 
 #[cfg(test)]
 mod tests {
     use super::*;
