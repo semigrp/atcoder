@@ -47,7 +47,57 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test() {
-        assert_eq!(solve().unwrap(), "result");
+    fn test_case_1() {
+        let n = 15;
+        let q = 3;
+        let a = vec![62, 65, 41, 13, 20, 11, 18, 44, 53, 12, 18, 17, 14, 10, 39];
+        let lr = vec![(4, 13), (3, 10), (2, 15)];
+        let expected = "220\n212\n375";
+        let result = solve(n, q, a, lr).unwrap();
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_case_2_single_element() {
+        let n = 1;
+        let q = 1;
+        let a = vec![42];
+        let lr = vec![(1, 1)];
+        let expected = "42";
+        let result = solve(n, q, a, lr).unwrap();
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_case_3_entire_range() {
+        let n = 5;
+        let q = 1;
+        let a = vec![1, 2, 3, 4, 5];
+        let lr = vec![(1, 5)];
+        let expected = "15";
+        let result = solve(n, q, a, lr).unwrap();
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_case_4_multiple_queries() {
+        let n = 6;
+        let q = 2;
+        let a = vec![10, 20, 30, 40, 50, 60];
+        let lr = vec![(1, 3), (4, 6)];
+        let expected = "60\n150";
+        let result = solve(n, q, a, lr).unwrap();
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn test_case_5_large_numbers() {
+        let n = 3;
+        let q = 1;
+        let a = vec![1_000_000_000, 1_000_000_000, 1_000_000_000];
+        let lr = vec![(1, 3)];
+        let expected = "3000000000";
+        let result = solve(n, q, a, lr).unwrap();
+        assert_eq!(result, expected);
     }
 }
