@@ -16,16 +16,13 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve(n: usize, d: usize, lr: Vec<(usize, usize)>) -> Result<Vec<usize>> {
-}
-
 fn main() {
     input! {
         d: usize,
         n: usize,
         lr: [(usize, usize); n], 
     }
-	let mut ac = vec![0; D + 2];
+	let mut ac = vec![0; d + 2];
 
 	for (l, r) in lr {
 		ac[l] += 1;
