@@ -16,24 +16,25 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
+fn solve(n: usize, d: usize, lr: Vec<(usize, usize)>) -> Result<Vec<usize>> {
 }
 
-fn main() -> Result<()> {
+fn main() {
     input! {
+        d: usize,
+        n: usize,
+        lr: [(usize, usize); n], 
     }
-    let result = solve()?;
-    println!("{}", result);
-    Ok(())
-}
+	let mut ac = vec![0; D + 2];
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+	for (l, r) in lr {
+		ac[l] += 1;
+		ac[r + 1] -= 1;
 
-    #[test]
-    fn test() {
-        assert_eq!(solve().unwrap(), "result");
-    }
-}
+	let mut ca = 0;
+	for day in 1..=d
+		ca += ac[day];
+		println!("{}", ca);
+	}
+
+
