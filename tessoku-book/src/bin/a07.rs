@@ -30,11 +30,13 @@ fn main() {
 	for (l, r) in lr {
 		ac[l] += 1;
 		ac[r + 1] -= 1;
+	}
 
 	let mut ca = 0;
-	for day in 1..=d
+	for day in 1..=d {
 		ca += ac[day];
 		println!("{}", ca);
 	}
+}
 
 
