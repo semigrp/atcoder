@@ -18,6 +18,16 @@ const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
+        N: usize,
+        X: usize,
+        A: [usize; N],
     }
+    for a in A {
+        if a == X {
+            println!("{} ", "Yes");
+            return Ok(());
+        }
+    }
+    println!("{}", "No");
     Ok(())
 }

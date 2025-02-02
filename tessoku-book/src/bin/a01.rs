@@ -18,6 +18,10 @@ const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
+        N: usize,
     }
+
+    let mut result = N * N;
+    println!("{}", result);
     Ok(())
 }
