@@ -14,25 +14,10 @@ use proconio::{
     marker::{Chars, Usize1},
 };
 
-fn solve(n:usize) -> Result<usize> {
-    Ok(n*n)
-}
+const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
-        n: usize,
     }
-    let result = solve(n)?;
-    println!("{}", result);
     Ok(())
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test() {
-        assert_eq!(solve(3).unwrap(), 9);
-    }
 }

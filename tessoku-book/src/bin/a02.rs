@@ -14,32 +14,10 @@ use proconio::{
     marker::{Chars, Usize1},
 };
 
-fn solve(x: i32, a: &[i32]) -> Result<String> {
-    for &i in a {
-        if i == x {
-            return Ok("Yes".into())
-        }
-    }
-    Ok("No".into())
-}
+const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
-        n: usize,
-        x: i32,
-        a: [i32; n],
     }
-    let result = solve(x, &a)?;
-    println!("{}", result);
     Ok(())
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test() {
-        assert_eq!(solve().unwrap(), "result");
-    }
 }

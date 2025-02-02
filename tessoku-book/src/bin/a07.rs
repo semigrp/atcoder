@@ -16,24 +16,8 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn main() {
+fn main() -> Result<()> {
     input! {
-        d: usize,
-        n: usize,
-        lr: [(usize, usize); n], 
     }
-	let mut ac = vec![0; d + 2];
-
-	for (l, r) in lr {
-		ac[l] += 1;
-		ac[r + 1] -= 1;
-	}
-
-	let mut ca = 0;
-	for day in 1..=d {
-		ca += ac[day];
-		println!("{}", ca);
-	}
+    Ok(())
 }
-
-

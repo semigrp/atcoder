@@ -16,24 +16,8 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn solve() -> Result<String> {
-    Ok("result".into())
-}
-
 fn main() -> Result<()> {
     input! {
     }
-    let result = solve()?;
-    println!("{}", result);
     Ok(())
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test() {
-        assert_eq!(solve().unwrap(), "result");
-    }
 }
