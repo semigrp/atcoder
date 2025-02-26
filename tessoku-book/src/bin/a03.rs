@@ -24,12 +24,12 @@ fn main() -> Result<()> {
         Q: [usize; N]
     }
     
+    let q_set: HashSet<usize> = Q.iter().cloned.collect();
+    
     for &p in &P {
-        for &q in &Q {
-            if K - p == q {
-                println!("Yes");
-                return Ok(());
-            }
+        if q_set.contains(&(k - p)) {
+            println!("Yes");
+            return Ok(());
         }
     }
     
