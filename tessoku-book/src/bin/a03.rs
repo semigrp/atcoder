@@ -18,6 +18,21 @@ const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
+        N: usize,
+        K: usize,
+        P: [usize; N],
+        Q: [usize; N]
     }
+    
+    for &p in &P {
+        for &q in &Q {
+            if K - p == q {
+                println!("Yes");
+                return;
+            }
+        }
+    }
+    
+    println!("No");
     Ok(())
 }
