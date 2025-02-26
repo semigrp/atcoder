@@ -28,7 +28,7 @@ fn main() -> Result<()> {
         for &q in &Q {
             if K - p == q {
                 println!("Yes");
-                return;
+                return Ok(());
             }
         }
     }
