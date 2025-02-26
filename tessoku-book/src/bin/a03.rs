@@ -27,7 +27,7 @@ fn main() -> Result<()> {
     let q_set: HashSet<usize> = Q.iter().cloned.collect();
     
     for &p in &P {
-        if q_set.contains(&(k - p)) {
+        if q_set.contains(&(K - p)) {
             println!("Yes");
             return Ok(());
         }
