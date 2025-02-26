@@ -6,7 +6,7 @@
 #![allow(clippy::neg_multiply)]
 
 use itertools::Itertools;
-use std::collections::{BTreeMap, BTreeSet, VecDeque};
+use std::collections::{BTreeMap, BTreeSet, VecDeque, HashSet};
 use std::io::Result;
 
 use proconio::{
@@ -24,7 +24,7 @@ fn main() -> Result<()> {
         Q: [usize; N]
     }
     
-    let q_set: HashSet<usize> = Q.iter().cloned.collect();
+    let q_set: HashSet<usize> = Q.iter().cloned().collect();
     
     for &p in &P {
         if q_set.contains(&(K - p)) {
