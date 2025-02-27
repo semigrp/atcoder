@@ -18,6 +18,11 @@ const MOD: usize = 1e9 as usize + 7;
 
 fn main() -> Result<()> {
     input! {
+        N: usize, 
     }
+
+    println!("{:010b}", N);
+    
+    
     Ok(())
 }
