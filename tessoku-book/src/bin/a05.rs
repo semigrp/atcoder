@@ -33,5 +33,5 @@ fn main() {
         }
     }
     
-    println!("{}", count);
+    println!("{}", c);
 }
