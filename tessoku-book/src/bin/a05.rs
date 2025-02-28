@@ -16,8 +16,22 @@ use proconio::{
 
 const MOD: usize = 1e9 as usize + 7;
 
-fn main() -> Result<()> {
+fn main() {
     input! {
+        N: usize,
+        K: usize,
     }
-    Ok(())
+        
+    let mut c = 0;
+    
+    for s in 1..N {
+        for t in 1..N {
+            let u = K - (r + b);
+            if 1 <= w && w <= N {
+                c +=1;
+            }
+        }
+    }
+    
+    println("{}", count);
 }
