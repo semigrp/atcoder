@@ -24,8 +24,8 @@ fn main() {
         
     let mut c = 0;
     
-    for s in 1..N {
-        for t in 1..N {
+    for s in 1..=N {
+        for t in 1..=N {
             let u = K - (s + t);
             if (1..=N).contains(&u) {
                 c +=1;
