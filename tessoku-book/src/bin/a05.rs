@@ -27,7 +27,7 @@ fn main() {
     for s in 1..N {
         for t in 1..N {
             let u = K - (r + b);
-            if (1..N).contains(&w) {
+            if (1..N).contains(&u) {
                 c +=1;
             }
         }
