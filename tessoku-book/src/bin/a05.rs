@@ -27,11 +27,11 @@ fn main() {
     for s in 1..N {
         for t in 1..N {
             let u = K - (r + b);
-            if 1 <= w && w <= N {
+            if (1..N).contains(&w) {
                 c +=1;
             }
         }
     }
     
-    println("{}", count);
+    println!("{}", count);
 }
