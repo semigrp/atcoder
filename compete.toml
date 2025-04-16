@@ -77,8 +77,12 @@ fn mod_pow(mut base: usize, mut exp: usize, modulus: usize) -> usize {
     result
 }
 
-#[fastout]
 fn main() {
+  solve();
+}
+
+#[fastout]
+fn solve() {
     input! {
     }
 }
