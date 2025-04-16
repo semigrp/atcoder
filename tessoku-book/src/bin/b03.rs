@@ -17,6 +17,16 @@ use proconio::{
 const MOD: usize = 1_000_000_007;
 const INF: usize = 1 << 60;
 
+fn main() {
+  solve();
+}
+
+#[fastout]
+fn solve() {
+    input! {
+    }
+}
+
 fn read<T: std::str::FromStr>() -> T {
     let mut s = String::new();
     std::io::stdin().read_line(&mut s).ok();
@@ -51,16 +61,6 @@ fn mod_pow(mut base: usize, mut exp: usize, modulus: usize) -> usize {
         exp >>= 1;
     }
     result
-}
-
-fn main() {
-  solve();
-}
-
-#[fastout]
-fn solve() {
-    input! {
-    }
 }
 
 fn gcd(a: usize, b: usize) -> usize {
