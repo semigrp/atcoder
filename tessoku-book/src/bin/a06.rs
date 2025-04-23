@@ -24,6 +24,20 @@ fn main() {
 #[fastout]
 fn solve() {
     input! {
+        n: usize,
+        q: usize,
+        a: [i64; n],
+        queries: [(usize, usize); q]
+    }
+
+    let mut cumsum = vec![0i64; n+1];
+    for i in 0..n {
+        cumsum[i+1] = cumsum[i] + a[i];
+    }
+
+    for (l, r) in queries {
+        let sum = cumsum[r] - cumsum[l-1];
+        println!("{}", sum);
     }
 }
 
